@@ -66,6 +66,7 @@ body{
 
 .wrappar{
     padding: 2rem;
+    min-height: 811px;
 }
 
 .empty-alert{
@@ -181,6 +182,77 @@ body{
 
 /*-- /end product page --*/
 
+/*-- Start Auth Pages --*/
+
+.signup-form,
+.login-form{
+    width: 400px;
+    margin: 10% auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: -1px 16px 10px #d2d2d263;
+}
+
+.signup-form .form-group,
+.login-form .form-group{
+    position: relative;
+}
+
+.signup-form .form-group:not(:last-of-type) input,
+.login-form .form-group:not(:last-of-type) input{
+    padding: 20px 35px;
+    border-radius: 0;
+}
+
+.login-form .form-group:last-of-type input,
+.signup-form .form-group:last-of-type input{
+    border-radius: 0;
+}
+
+.signup-form .form-group i.fa,
+.login-form .form-group i.fa{
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    font-size: 20px;
+    color: #aaa;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forget p{
+    position: relative;
+    margin: 0;
+}
+
+#remember{
+    display: none;
+}
+
+.remember-label::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: calc((100% - 15px) / 3);
+    right: 0;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+}
+
+#remember:checked + label::before{
+    content: "\f00c";
+    color: #fff;
+    background-color: #007bff;
+    font-family: fontAwesome;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-- /end auth pages --*/
 
 /*-- /end pages --*/
 
@@ -204,7 +276,7 @@ body{
 
 .footer .copyright p .fa-heart{
     color: rgb(245, 94, 94);
-    animation: heart 3s infinite;
+    animation: heart 1s linear infinite;
 }
 
 .footer .copyright p .dev-name{
@@ -282,9 +354,9 @@ body{
 /*-- /end footer --*/
 
 @keyframes heart {
-    0%{transform: scale(1);}
-    25%{transform: scale(1.2);}
-    50%{transform: scale(1);}
-    75%{transform: scale(1.2);}
-    100%{transform: scale(1);}
+    0% { transform: scale(1.1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1.4); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1.1); }
 }

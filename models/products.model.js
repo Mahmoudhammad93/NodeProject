@@ -43,6 +43,9 @@ exports.getProductById = id => {
         }).then(products => {
             mongoose.disconnect()
             resolve(products)
-        }).catch(err => reject(err))
+        }).catch(err =>{
+            mongoose.disconnect()
+            reject(err)
+        })
     })
 }
