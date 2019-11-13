@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 
 const homeRouter = require('./routes/home.route')
+const productRouter = require('./routes/product.route')
 
 const app = express()
 
@@ -14,10 +15,11 @@ const app = express()
 
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'images')))
+app.use(express.static(path.join(__dirname, 'default-img')))
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
 app.use('/', homeRouter)
-
+app.use('/product', productRouter)
 const port = 3000;
 app.listen(port, () => console.log('Server listen on port: '+ port));

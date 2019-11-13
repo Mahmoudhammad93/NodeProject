@@ -1,0 +1,57 @@
+<%- include('layout/header')%>
+<%- include('layout/navbar')%>
+
+<div class="product">
+    <div class="wrappar">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 col-lg-6 col-sm-12">
+                    <div class="image">
+                        <img src="/<%= product.img %>" alt="">
+                    </div>
+                </div>
+                <div class="col col-12 col-lg-6 col-sm-12">
+                    <div class="product-info">
+                        <p>
+                            <span class="label">Name:</span>
+                            <span class="content"><%= product.name %></span>
+                        </p>
+                        <p>
+                            <span class="label">Description:</span>
+                            <span class="content"><%= product.describe %></span>
+                        </p>
+                        <p class="price">
+                            <span class="label">Price:</span>
+                            <span class="content">
+                                <span class="badge badge-info">
+                                    <%= product.price %>$
+                                </span>
+                            </span>
+                        </p>
+                        <p>
+                            <span class="label">Time:</span>
+                            <span class="content"><%= product.time %></span>
+                        </p>
+                        <div class="cart-form">
+                            <form action="/cart" method="POST">
+                                <div class="form-group">
+                                    <input type="number" name="amount" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary btn-block" value="Add To Cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="form-group added">
+                                    <input type="submit" class="btn btn-light btn-block" disabled value="Added To Cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer')%>

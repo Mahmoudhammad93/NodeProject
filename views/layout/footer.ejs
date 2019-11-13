@@ -1,3 +1,49 @@
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 col-md-6 col-sm-12">
+                    <div class="copyright">
+                        <p>
+                            Made With 
+                            <i class="fa fa-heart"></i>
+                            By <a class="dev-name" href="#">Mahmoud Hammad</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6 col-sm-12">
+                    <div class="social">
+                        <ul class="links list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-github"></i>
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- JQuery -->
     <script src="/js/jquery.min.js"></script>
 
@@ -10,20 +56,21 @@
     <!-- Script -->
     <script src="/js/script.js"></script>
     <script>
-        $(document).on('submit', '#filter-form', function(e){
-            let method = $(this).attr('method'),
-                data = $(this).serialize();
-            e.preventDefault()
-            // console.log(method)
-            $.ajax({
-                method: method,
-                data, data,
-                url: '../../controllers/home.controller.js',
-                success: function(data){
-                    console.log(data['category'])
-                }
-            })
-        })
+        // $(document).on('submit', '#filter-form', function(e){
+        //     let formDataVar = new FormData($(this)[0]);
+        //     let method = $(this).attr('method'),
+        //         data = $(this).serialize();
+        //     e.preventDefault()
+        //     // console.log(method)
+        //     $.ajax({
+        //         url: '../../controllers/home.controller.js',
+        //         method: method,
+        //         data, formDataVar,
+        //         success: function(data){
+        //             console.log(data['category'])
+        //         }
+        //     })
+        // })
     </script>
 </body>
 </html>

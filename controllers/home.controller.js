@@ -2,10 +2,6 @@ const productsModal = require('../models/products.model')
 
 exports.getHome = (req, res, next) => {
 
-    let s = data['category'];
-
-    console.log(s)
-
     // Get Category
     let category = req.query.category
     let productsPromise
