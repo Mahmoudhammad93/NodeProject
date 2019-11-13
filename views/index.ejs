@@ -1,0 +1,74 @@
+<%- include('layout/header')%>
+<%- include('layout/navbar')%>
+
+<div id="home-page">
+    <div class="wrappar">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="filter">
+                        <form id="filter-form" action="/" method="GET">
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <select class="form-control" name="category">
+                                        <option value="all">All</option>
+                                        <option value="phones">Phones</option>
+                                        <option value="tablets">Tablets</option>
+                                        <option value="labtops">Labtops</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <input type="submit" class="btn btn-primary btn-block" value="Filter">
+                                    <i class="fa fa-filter"></i>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% for(let product of products){ %>
+                    <div class="col col-12 col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="title">
+                                    <a href="/product/<%= product._id %>"><%= product.name %></a>
+                                </h4>
+                                <p>
+                                    Price: <span class="badge badge-info"><%= product.price %>$</span>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <div class="p-img">
+                                    <img src="<%= product.img %>" alt="<%= product.category
+ %>" title="<%= product.category
+ %>" />
+                                </div>
+                                <div class="desc">
+                                    <p><%= product.describe %></p>
+                                </div>
+                                <div class="cart-form">
+                                    <form action="/cart" method="POST">
+                                        <div class="form-group">
+                                            <input type="number" name="amount" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary btn-block" value="Add To Cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                        <div class="form-group added">
+                                            <input type="submit" class="btn btn-light btn-block" disabled value="Added To Cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer')%>

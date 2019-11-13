@@ -1,0 +1,29 @@
+    <!-- JQuery -->
+    <script src="/js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Popper -->
+    <script src="/js/popper.min.js"></script>
+
+    <!-- Script -->
+    <script src="/js/script.js"></script>
+    <script>
+        $(document).on('submit', '#filter-form', function(e){
+            let method = $(this).attr('method'),
+                data = $(this).serialize();
+            e.preventDefault()
+            // console.log(method)
+            $.ajax({
+                method: method,
+                data, data,
+                url: '../../controllers/home.controller.js',
+                success: function(data){
+                    console.log(data['category'])
+                }
+            })
+        })
+    </script>
+</body>
+</html>
