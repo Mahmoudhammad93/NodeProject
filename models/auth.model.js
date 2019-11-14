@@ -18,7 +18,7 @@ exports.createNewUser = (username, email, password) => {
         mongoose.connect(DB_URL).then(() => {
             return User.findOne({email: email})
         }).then(user => {
-            if(user) {
+            if(!user) {
                 mongoose.disconnect()
                 reject('Email is already used')
             }
@@ -28,8 +28,8 @@ exports.createNewUser = (username, email, password) => {
         }).then(hashedPassword => {
             let user = new User({
                 username: username,
-                password: hashedPassword,
-                email: email
+                email: email,
+                password: hashedPassword
             })
             return user.save()
         }).then(() => {
@@ -40,5 +40,29 @@ exports.createNewUser = (username, email, password) => {
             reject(err)
         })
     })
+}
 
+exports.login = (email, password) => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => User.findOne({email: email})).then(user => {
+            if(!user){
+                mongoose.disconnect()
+                reject('The user is not matches')
+            }else{
+                bcrypt.compare(password, user.password).then(same => {
+                    if(!same){
+                        mongoose.disconnect()
+                        reject('Your password or email is invalid')
+                    }else{
+                        mongoose.disconnect()
+                        resolve(user._id)
+                    }
+                })
+            }
+        }).catch(err => {
+            mongoose.disconnect()
+            reject(err)
+            console.log(err)
+        })
+    })
 }

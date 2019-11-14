@@ -6,6 +6,17 @@
         <div class="container">
             <div class="row">
                 <div class="col col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">Home</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
                     <div class="filter">
                         <form id="filter-form" action="/" method="GET">
                             <div class="row">
@@ -24,7 +35,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> 
             </div>
             <div class="row">
             <% if(products.length === 0){ %>
