@@ -20,15 +20,17 @@
                         <div class="logo">
                             <img src="/store.png" alt="">
                         </div>
-                        <div class="error">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Oops!</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                Your password or email is invalid .
+                        <% if(authError){ %>
+                            <div class="error">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Oops!</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <%= authError %>
+                                </div>
                             </div>
-                        </div>
+                        <%}%>
                         <form action="/login" method="POST">
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email">

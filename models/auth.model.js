@@ -18,7 +18,7 @@ exports.createNewUser = (username, email, password) => {
         mongoose.connect(DB_URL).then(() => {
             return User.findOne({email: email})
         }).then(user => {
-            if(!user) {
+            if(user) {
                 mongoose.disconnect()
                 reject('Email is already used')
             }

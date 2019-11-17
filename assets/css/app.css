@@ -396,6 +396,20 @@ body{
     padding: 10px;
 }
 
+.logout-form{
+    position: relative;
+}
+
+.logout-form input{
+    padding-left: 45px;
+}
+
+.logout-form i{
+    position: absolute;
+    top: 9px;
+    left: 25px;
+}
+
 /*-- /end auth pages --*/
 
 /*-- /end pages --*/
