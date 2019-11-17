@@ -223,7 +223,8 @@ body{
     background-position: center;
 }
 
-#login-page{
+#login-page,
+#signup-page{
     min-height: 947px;
 }
 

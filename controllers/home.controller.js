@@ -9,7 +9,8 @@ exports.getHome = (req, res, next) => {
     else productsPromise = productsModal.getAllProducts()
     productsPromise.then(products => {
         res.render('index',{
-            products: products
+            products: products,
+            isUser: req.session.userId
         })
     })
 }

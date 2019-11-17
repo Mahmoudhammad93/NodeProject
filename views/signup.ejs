@@ -1,6 +1,7 @@
 <%- include('layout/header')%>
 <%- include('layout/navbar')%>
 
+
 <div id="signup-page">
     <div class="wrappar">
         <div class="overlay">
@@ -10,22 +11,47 @@
                 <div class="col col-12">
                     <div class="signup-form">
                         <form action="/signup" method="POST">
+                            
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username" placeholder="Username">
                                 <i class="fa fa-user"></i>
                             </div>
+                            <% let usernameError = validationErrors.find(err => err.param === 'username')
+                                if(usernameError){ %>
+                                    <div class="alert alert-danger">
+                                        <%= usernameError.msg%>
+                                    </div>
+                            <% } %>
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email">
                                 <i class="fa fa-envelope"></i>
                             </div>
+                            <% let emailError = validationErrors.find(err => err.param === 'email')
+                                if(emailError){ %>
+                                    <div class="alert alert-danger">
+                                        <%= emailError.msg%>
+                                    </div>
+                            <% } %>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password">
                                 <i class="fa fa-lock"></i>
                             </div>
+                            <% let passError = validationErrors.find(err => err.param === 'password')
+                                if(passError){ %>
+                                    <div class="alert alert-danger">
+                                        <%= passError.msg%>
+                                    </div>
+                            <% } %>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="conf-password" placeholder="Confirm Password">
+                                <input type="password" class="form-control" name="confPassword" placeholder="Confirm Password">
                                 <i class="fa fa-lock"></i>
                             </div>
+                            <% let confPassError = validationErrors.find(err => err.param === 'confPassword')
+                                if(confPassError){ %>
+                                    <div class="alert alert-danger">
+                                        <%= confPassError.msg%>
+                                    </div>
+                            <% } %>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary btn-block" value="Sign up">
                             </div>
