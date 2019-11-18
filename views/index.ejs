@@ -1,20 +1,21 @@
 <%- include('layout/header')%>
 <%- include('layout/navbar')%>
+<%- include('layout/side-menu')%>
 
 <div id="home-page">
     <div class="wrappar">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">Home</li>
+                            <li class="breadcrumb-item" aria-current="page">Home</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col col-12">
                     <div class="filter">
@@ -74,7 +75,7 @@
                                         </div>
                                     <%}%>
                                     <div class="cart-form">
-                                        <form action="/cart" method="POST" class="add-to-cart-form">
+                                        <form action="/cart" method="Post" class="add-to-cart-form">
                                             <div class="form-group">
                                                 <input type="number" name="amount" class="form-control">
                                                 <input type="hidden" name="name" value="<%= product.name%>">

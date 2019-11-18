@@ -8,7 +8,8 @@ exports.getProduct = (req, res, next) => {
     // To Get Products
     productsModel.getProductById(id).then((product) => {
         res.render('product', {
-            product: product
+            product: product,
+            isUser: req.session.userId
         })
     })
 
