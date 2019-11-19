@@ -6,6 +6,8 @@ const authGuard = require('./guards/auth.guard')
 
 const cartController = require("../controllers/cart.controller")
 
+router.get('/', authGuard.isAuth, cartController.getCart)
+
 router.post('/', authGuard.isAuth, 
     bodyParser.urlencoded({extended: true}),
     check('amount')

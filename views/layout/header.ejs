@@ -17,3 +17,15 @@
 
 </head>
 <body>
+    <!-- Start Cart Modal -->
+    <div class="cart-modal">
+        <span class="badge badge-danger number">
+            <% if(items){ %>
+                <%- items.length %>
+            <% }else{ %>
+                0
+            <% } %>
+        </span>
+        <i class="fa fa-shopping-cart"></i>
+    </div>
+    <!-- /end cart modal -->

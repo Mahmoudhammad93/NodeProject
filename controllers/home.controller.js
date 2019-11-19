@@ -1,4 +1,5 @@
 const productsModal = require('../models/products.model')
+const cartModal =require('../models/cart.model')
 
 exports.getHome = (req, res, next) => {
 
@@ -11,6 +12,7 @@ exports.getHome = (req, res, next) => {
         res.render('index',{
             products: products,
             isUser: req.session.userId,
+            items: cartModal.getItemsByUser,
             validationError: req.flash('validationErrors')[0]
         })
     })

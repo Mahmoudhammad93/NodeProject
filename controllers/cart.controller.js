@@ -1,6 +1,15 @@
 const cartModel = require('../models/cart.model')
 const validationResult = require('express-validator').validationResult
 
+exports.getCart = (req, res, next) => {
+    cartModel.getItemsByUser(req.session.userId).then(items => {
+        res.render('cart', {
+            items: items,
+            isUser: true
+        })
+    }).catch(err => console.log(err))
+}
+
 exports.postCart = (req, res, next) => {
     if(validationResult(req).isEmpty()){
         cartModel.addNewItem({
@@ -8,13 +17,11 @@ exports.postCart = (req, res, next) => {
             price: req.body.price,
             amount: req.body.amount,
             productId: req.body.productId,
-            userId: req.body.userId,
+            userId: req.session.userId,
             timestamp: Date.now()
-        })
-        .then(() => {
+        }).then(() => {
             res.redirect('/cart')
-        })
-        .catch(err => {
+        }).catch(err => {
             console.log(err)
         })
     }else{

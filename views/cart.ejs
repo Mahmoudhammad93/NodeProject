@@ -1,0 +1,83 @@
+<%- include('layout/header')%>
+<%- include('layout/navbar')%>
+<%- include('layout/side-menu')%>
+
+<div class="cart">
+    <div class="wrappar">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <% if(items.length === 0){ %>
+                    <div class="col col-12">
+                        <div class="empty-alert">
+                            <div class="empty-icon">
+                                <img src="/box.png" alt="">
+                            </div>
+                            <p>Sorry products is empty</p>
+                        </div>
+                    </div>
+                <%}else{%>
+                    <div class="col col-12">
+                        <% for(let i = 0; i < items.length; i++){ %>
+                            <div class="item">
+                                <div class="item-img">
+                                    <img src="/android-1.jpg" alt="">
+                                </div>
+                                <div class="item-desc">
+                                    <p>
+                                        <span>Name: </span>
+                                        <span><%= items[i].name %></span>
+                                    </p>
+                                    <p>
+                                        <span>Feedback: </span>
+                                        <span>
+                                            feedback
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span>Price of one: </span>
+                                        <span><%= items[i].price %> EGP</span>
+                                    </p>
+                                    <p>
+                                        <span>Discount: </span>
+                                        <span><span class="badge badge-warning">30%</span></span>
+                                    </p>
+                                    <p>
+                                        <span>Total: </span>
+                                        <span><%= items.length %> X <%= items[i].price %> = <%= items[i].price * items.length %> EGP</span>
+                                    </p>
+                                </div>
+                                <div class="count-items">
+                                    <div class="count-field">
+                                        <button type="button" id="plus" class="plus">+</button>
+                                        <input class="count" type="number" value="1" disabled/>
+                                        <button type="button" id="minus" class="minus">-</button>
+                                    </div>
+                                    <p>
+                                        <span class="badge badge-warning"><%= items[i].price * items.length * 0.7 %> EGP</span>
+                                    </p>
+                                </div>
+                                <div class="btn-options">
+                                    <div class="btns">
+                                        <button class="btn btn-warning">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-warning">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                    </div>
+                    <div class="col col-3">
+                        <button class="btn btn-warning btn-block btn-pay">
+                            Total price <%= items[1].price %> Pay
+                        </button>
+                    </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer')%>

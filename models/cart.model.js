@@ -9,21 +9,38 @@ const cartSchema = mongoose.Schema({
     userId: String,
     productId: String,
     timestamp: Number
-})
+});
 
-const cartItem = mongoose.model('cart', cartSchema);
+const CartItem = mongoose.model('cart', cartSchema);
 
 exports.addNewItem = data => {
     return new Promise ((resolve, reject) => {
         mongoose
         .connect(DB_URL)
         .then(() => {
-            let item = new cartItem(data);
+            let item = new CartItem(data);
             return item.save();
         })
         .then(() => {
             mongoose.disconnect()
             resolve()
+        })
+        .catch(err => {
+            mongoose.disconnect()
+            reject(err)
+        })
+    })
+}
+
+exports.getItemsByUser = userId => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL)
+        .then(() => {
+            return CartItem.find({userId: userId})
+        })
+        .then(items => {
+            mongoose.disconnect()
+            resolve(items)
         })
         .catch(err => {
             mongoose.disconnect()
