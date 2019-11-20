@@ -49,3 +49,8 @@ exports.getProductById = id => {
         })
     })
 }
+
+// Add Product 
+exports.addProduct = (name, price, desc, file) => {
+
+}

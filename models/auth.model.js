@@ -7,7 +7,11 @@ const DB_URL = "mongodb://localhost:27017/shop";
 const userSchema = mongoose.Schema({
     username: String,
     email: String,
-    password: String
+    password: String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const User = mongoose.model("user", userSchema)
@@ -55,7 +59,10 @@ exports.login = (email, password) => {
                         reject('Your password or email is invalid')
                     }else{
                         mongoose.disconnect()
-                        resolve(user._id)
+                        resolve({
+                            id: user._id,
+                            isAdmin: user.isAdmin
+                        })
                     }
                 })
             }

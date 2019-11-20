@@ -1,0 +1,43 @@
+<%- include('layout/header')%>
+<%- include('layout/navbar')%>
+<%- include('layout/side-menu')%>
+
+<div id="add-product">
+    <div class="wrappar">
+        <%- include('layout/breadcrumb')%>
+        <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col col-12">
+                    <form class="add-product-form" action="/admin/add" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <input type="text" class="form-control" name="name" placeholder="Product Name">
+                            </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                <input type="number" class="form-control" name="price" placeholder="Product Price">
+                            </div>
+                            <div class="form-group col-md-9 col-sm-12">
+                                <textarea id="" cols="30" rows="10" class="form-control" name="desc" placeholder="Description :"></textarea>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                                <input type="file" id="file-field" class="form-control" name="file">
+                                <label for="file-field" class="file-label">
+                                    <img src="/favicon-96x96.png" alt="">
+                                    <span class="before-label">
+                                        <i class="fa fa-camera"></i>
+                                        Upload Image
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                                <input type="submit" class="btn btn-success btn-block" value="Add">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('layout/footer')%>

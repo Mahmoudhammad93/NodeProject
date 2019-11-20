@@ -12,7 +12,8 @@ exports.getHome = (req, res, next) => {
         res.render('index',{
             products: products,
             isUser: req.session.userId,
-            items: cartModal.getItemsByUser,
+            isAdmin: req.session.isAdmin,
+            items: cartModal.getAllProductInCart,
             validationError: req.flash('validationErrors')[0]
         })
     })

@@ -1,11 +1,13 @@
 const authModel = require("../models/auth.model")
 const validationResult = require('express-validator').validationResult;
+const cartModel = require('../models/cart.model')
 
 exports.getSignup = (req, res, next) => {
     res.render('signup', {
         authError: req.flash('authError')[0],
         validationErrors: req.flash('validationErrors'),
         isUser: false,
+        isAdmin: false,
         items: true
     })
 }
@@ -63,6 +65,7 @@ exports.getLogin = (req, res, next) => {
         authError: req.flash('authError')[0],
         validationErrors: req.flash('validationErrors'),
         isUser: false,
+        isAdmin: false,
         items: true
     })
 }
@@ -71,8 +74,9 @@ exports.postLogin = (req, res, next) => {
     if(req.body.email != '' && req.body.password != ''){
         authModel
         .login(req.body.email, req.body.password)
-        .then((id) => {
-            req.session.userId = id;
+        .then(result => {
+            req.session.userId = result.id;
+            req.session.isAdmin = result.isAdmin
             res.redirect('/');
         })
         .catch(err => {

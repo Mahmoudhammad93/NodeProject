@@ -48,3 +48,15 @@ exports.getItemsByUser = userId => {
         })
     })
 }
+
+// Get All Products In Cart
+exports.getAllProductInCart = () => {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(DB_URL).then(() => {
+            return Product.find({})
+        }).then(products => {
+            mongoose.disconnect()
+            resolve(products)
+        }).catch(err => reject(err))
+    })
+}

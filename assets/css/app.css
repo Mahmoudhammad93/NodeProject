@@ -208,29 +208,74 @@ body {
 }
 
 /*-- Start Product Page --*/
-.product .image {
+#product .image {
   height: 438px;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
   background-color: #fff;
 }
-.product .image img {
+#product .image img {
   width: 100%;
   height: 100%;
 }
-.product .product-info {
+#product .product-info {
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
   padding: 20px;
 }
-.product .product-info p.price {
+#product .product-info p.price {
   display: flex;
   justify-content: flex-end;
 }
 
 /*-- /end product page --*/
+/*-- Start Add Product page --*/
+.add-product-form textarea {
+  resize: none;
+  height: 300px;
+}
+.add-product-form #file-field {
+  display: none;
+}
+.add-product-form .file-label {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  border: 4px double #ddd;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.add-product-form .file-label img {
+  width: 100%;
+  height: 100%;
+}
+.add-product-form .file-label .before-label {
+  width: 100%;
+  height: 100px;
+  background-color: rgba(3, 3, 3, 0.5);
+  position: absolute;
+  left: 0;
+  bottom: -100px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+  font-size: 20px;
+  font-weight: bold;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.add-product-form .file-label:hover .before-label {
+  bottom: 0;
+}
+
+/*-- /end add product page --*/
 /*-- Start Auth Pages --*/
 #login-page,
 #signup-page {
@@ -260,19 +305,15 @@ body {
 .login-form .logo {
   width: 100px;
   height: 100px;
-  position: absolute;
-  top: -50px;
   left: calc((100% - 100px)/2);
   border-radius: 50%;
+  margin: 1rem auto;
+  margin-top: 0;
 }
 .signup-form .logo img,
 .login-form .logo img {
   width: 100%;
   height: 100%;
-}
-
-.login-form {
-  padding-top: 60px;
 }
 
 .signup-form .form-group,
@@ -304,6 +345,16 @@ body {
   justify-content: center;
 }
 
+.forget p {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
 .forget p .create-u {
   border-radius: 0;
 }
@@ -320,7 +371,7 @@ body {
 #remember {
   display: none;
 }
-#remember ::checked + label ::before {
+#remember:checked + label::before {
   content: "";
   color: #fff;
   background-color: #007bff;
@@ -334,6 +385,7 @@ body {
 .remember-label {
   margin: 0;
   padding-right: 18px;
+  cursor: pointer;
 }
 .remember-label::before {
   content: "";
@@ -538,6 +590,7 @@ body {
 .side-menu .menu .nav-item {
   padding: 10px;
   border-bottom: 1px solid #09235f;
+  cursor: pointer;
 }
 .side-menu .menu .nav-item a {
   color: #fff;
@@ -545,6 +598,28 @@ body {
 }
 .side-menu .menu .nav-item a p {
   margin: 0;
+  font-size: 20px;
+  position: relative;
+}
+.side-menu .menu .nav-item a p span {
+  font-size: 15px;
+}
+.side-menu .menu .nav-item a p span.chevrone {
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  position: absolute;
+  top: calc((100% - 10px) / 2);
+  right: 10px;
+  transform: rotate(-45deg);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.side-menu .menu .nav-item:hover span.chevrone {
+  animation: chevrone 1s linear infinite;
 }
 .side-menu .menu .nav-item::first-of-type {
   border-top: #09235f !important;
@@ -587,6 +662,7 @@ body {
   box-shadow: 1px 2px 25px #afafafab;
   border-bottom: 2px solid #ddd;
   border-radius: 10px;
+  border-bottom: 2px solid #ddd;
 }
 .item .item-img {
   width: 20%;
@@ -693,6 +769,23 @@ body {
   }
   100% {
     transform: scale(1.1);
+  }
+}
+@keyframes chevrone {
+  0% {
+    right: 0;
+  }
+  25% {
+    right: 10px;
+  }
+  50% {
+    right: 0;
+  }
+  75% {
+    right: 10px;
+  }
+  100% {
+    right: 0;
   }
 }
 

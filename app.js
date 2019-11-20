@@ -9,6 +9,7 @@ const homeRouter = require('./routes/home.route')
 const productRouter = require('./routes/product.route')
 const cartRouter = require('./routes/cart.route')
 const authRouter = require('./routes/auth.route')
+const adminRouter = require('./routes/admin.route')
 
 const app = express()
 
@@ -18,6 +19,9 @@ const app = express()
 //     else if(req.url === '/about') res.end('Hello From About')
 //     else res.end('404 not found')
 // }).listen(port, () => console.log('Server listen on port: '+ port));
+// app.use(express.static('public'))
+// app.use(express.static('files'))
+// app.use('/static', express.static(path.join(__dirname, 'public')))
 
 app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'images')))
@@ -35,12 +39,14 @@ app.use(session({
     store: STORE
 }))
 
-app.set('view engine', 'ejs')
-app.set('views', 'views')
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.use('/', homeRouter)
 app.use('/', authRouter)
 app.use('/product', productRouter)
 app.use('/cart', cartRouter)
+app.use('/admin', adminRouter)
+
 const port = 3000;
 app.listen(port, () => console.log('Server listen on port: '+ port));

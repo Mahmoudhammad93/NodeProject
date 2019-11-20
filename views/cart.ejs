@@ -2,8 +2,9 @@
 <%- include('layout/navbar')%>
 <%- include('layout/side-menu')%>
 
-<div class="cart">
+<div id="cart">
     <div class="wrappar">
+        <%- include('layout/breadcrumb')%>
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <% if(items.length === 0){ %>
@@ -49,7 +50,7 @@
                                 <div class="count-items">
                                     <div class="count-field">
                                         <button type="button" id="plus" class="plus">+</button>
-                                        <input class="count" type="number" value="1" disabled/>
+                                        <input class="count" type="number" value="<%= items.length %>" disabled/>
                                         <button type="button" id="minus" class="minus">-</button>
                                     </div>
                                     <p>
@@ -71,7 +72,7 @@
                     </div>
                     <div class="col col-3">
                         <button class="btn btn-warning btn-block btn-pay">
-                            Total price <%= items[1].price %> Pay
+                            Total price  EGP Pay
                         </button>
                     </div>
                 <%}%>
