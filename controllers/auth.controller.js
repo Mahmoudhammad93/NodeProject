@@ -8,23 +8,12 @@ exports.getSignup = (req, res, next) => {
         validationErrors: req.flash('validationErrors'),
         isUser: false,
         isAdmin: false,
-        items: true
+        items: true,
+        pageTitle: 'sign'
     })
 }
 
 exports.postSignup = (req, res, next) => {
-    // return console.log(validationResult(req));
-    // authModel
-    //     .createNewUser(
-    //         req.body.username,
-    //         req.body.email,
-    //         req.body.password
-    //     )
-    //     .then(() => res.redirect('/login'))
-    //     .catch(err => {
-    //         console.log(err)
-    //         res.redirect('/signup')
-    //     })
     if(validationResult(req).isEmpty()){
         authModel
         .createNewUser(
@@ -41,23 +30,6 @@ exports.postSignup = (req, res, next) => {
         req.flash('validationErrors', validationResult(req).array())
         res.redirect('/signup')
     }
-    
-    // if(validationResult(req).isEmpty()){
-    //     authModel
-    //     .createNewUser(
-    //         req.body.username,
-    //         req.body.email,
-    //         req.body.password
-    //     )
-    //     .then(() => res.redirect('/login'))
-    //     .catch(err => {
-    //         console.log(err)
-    //         res.redirect('/signup')
-    //     })
-    // }else{
-    //     req.flash('validationErrors', validationResult(req).array())
-    //     res.redirect('/signup')
-    // }
 }
 
 exports.getLogin = (req, res, next) => {

@@ -7,10 +7,25 @@ exports.getAdd = (req, res, next) => {
         validationErrors: req.flash('ValidationErrors'),
         isUser: true,
         items: cartModal.getItemsByUser,
-        isAdmin: true
+        isAdmin: true,
+        pageTitle: 'Add Product'
     });
 };
 
 exports.postAdd = (req, res, next) => {
-    console.log(validationResult(req).array())
+    if (validationResult(req).isEmpty()){
+        req.body.file = req.file.filename;
+        productModal
+        .addNewProduct(req.body)
+        .then(() => {
+            req.flash('added', true);
+            res.redirect('/admin/add')
+        })
+        .catch(err => {
+            next(err)
+        })
+    }else{
+        req.flash('validationErrors', validationResult(req).array())
+        res.redirect('/admin/add')
+    }
 }

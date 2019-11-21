@@ -9,7 +9,7 @@
             </h4>
         </div>
         <ul class="menu list-unstyled">
-            <li class="nav-item active">
+            <li class="nav-item <%= pageTitle === 'Home' ? 'active' : '' %>">
                 <a href="/">
                     <p>
                         <i class="fa fa-home"></i>
@@ -18,7 +18,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= pageTitle === 'Cart' ? 'active': '' %>">
                 <a href="/cart">
                     <p>
                         <i class="fa fa-shopping-cart"></i>
@@ -27,7 +27,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= pageTitle === 'Orders' ? 'active': '' %>">
                 <a href="#">
                     <p>
                         <i class="fa fa-shopping-bag"></i>
@@ -36,7 +36,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <%= pageTitle === 'Add Product' ? 'active': '' %>">
                 <a href="#">
                     <p>
                         <i class="fa fa-list-ul"></i>
@@ -45,8 +45,8 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#">
+            <li class="nav-item <%= pageTitle === 'Users' ? 'active': '' %>">
+                <a href="/users">
                     <p>
                         <i class="fa fa-users"></i>
                         <span>Users</span>

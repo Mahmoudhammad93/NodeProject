@@ -11,6 +11,9 @@ const cartRouter = require('./routes/cart.route')
 const authRouter = require('./routes/auth.route')
 const adminRouter = require('./routes/admin.route')
 
+// Cart Model
+const cartModal = require('./models/cart.model')
+
 const app = express()
 
 
@@ -48,5 +51,25 @@ app.use('/product', productRouter)
 app.use('/cart', cartRouter)
 app.use('/admin', adminRouter)
 
-const port = 3000;
+app.get('/error', (req, res, next) => {
+    res.render('error.ejs', {
+        isUser: req.session.userId,
+        isAdmin: req.session.isAdmin,
+        items: cartModal.getAllProductInCart
+    })
+})
+
+app.get('/not-admin', (req, res, next) => {
+    res.render('not-admin.ejs', {
+        isUser: req.session.userId,
+        isAdmin: false,
+        items: cartModal.getAllProductInCart
+    })
+})
+
+app.use((error, req, res, next) => {
+    res.redirect('/error')
+})
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('Server listen on port: '+ port));
