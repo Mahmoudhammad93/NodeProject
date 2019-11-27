@@ -1,5 +1,6 @@
 const productsModal = require('../models/products.model')
 const cartModal =require('../models/cart.model')
+const path = require("path");
 
 exports.getHome = (req, res, next) => {
     // Get Category
